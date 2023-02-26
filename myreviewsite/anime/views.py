@@ -34,7 +34,7 @@ class CreateAnimeView(LoginRequiredMixin,CreateView):
     template_name = 'anime/anime_create.html'
     model = Anime
     fields = {'name','overview','thumbnail',
-              'main_category','sub_category','score'}
+              'main_category','sub_category','score','user'}
     success_url = reverse_lazy('anime_index')
 
 class DeleteAnimeView(LoginRequiredMixin,DeleteView):
