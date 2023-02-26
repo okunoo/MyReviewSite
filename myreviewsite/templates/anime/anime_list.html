@@ -9,7 +9,7 @@
         {%for item in object_list%}
         <div class="p-4 m-4 bg-light border border-success border-2 rounded shadow-lg">
             <h2 class="text-success">{{item.name}}</h2>
-            <img src="{{item.thumbnail.url}}"  class="img-responsive"/>
+            <img src="{{item.thumbnail.url}}"  class="img-thumbnail"/>
             <h6>メインカテゴリ:{{item.main_category}}</h6>
             <h6>サブカテゴリ:{{item.sub_category}}</h6>
             <h5>スコア：{{item.score}}点</h5>

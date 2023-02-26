@@ -25,7 +25,7 @@
         {%for ranking_anime in page_obj%}
             <div class="p-4 m-4 bg-light border border-success rounded">
                 <h3 class="text-success h5">{{ranking_anime.name}}</h3>
-                <img src="{{ranking_anime.thumbnail.url}}"  class="img-responsive">
+                <img src="{{ranking_anime.thumbnail.url}}"  class="img-thumbnail">
                 <h5>評価:{{ranking_anime.avg_score|floatformat:2}}点</h5>
                 <a href="{% url 'detail-anime' ranking_anime.id %}">詳細・レビューページへ</a>
             </div>
