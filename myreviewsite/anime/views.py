@@ -8,9 +8,15 @@ from django.views.generic import (ListView,
 from django.urls import reverse,reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Avg
-from .models import Anime,Review
+from django.db.models import Q
 from django.core.paginator import Paginator
+
 from .consts import ITEM_PER_PAGE
+
+from .models import Anime,Review
+
+from .forms import SearchForm
+
 
 def index_view(request):
     object_list = Anime.objects.order_by('-id')
@@ -20,6 +26,20 @@ def index_view(request):
     page_obj = paginator.page(page_number)
     return render(request,'anime/index.html',{'object_list':object_list,'ranking_list':ranking_list,'page_obj':page_obj})
 
+
+def post_search(request):
+    form = SearchForm()
+    query = None
+    results = []
+
+    if 'query' in request.GET:
+        form = SearchForm(request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            results = Anime.objects.filter(
+                Q(name__icontains=query) | Q(main_category__icontains=query) | Q(sub_category__icontains=query))
+
+    return render(request, 'anime/anime_search.html', {'form': form, 'query': query, 'results': results})
 
 # Create your views here.
 class AllAnimeView(ListView):

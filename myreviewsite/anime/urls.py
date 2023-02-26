@@ -10,4 +10,5 @@ urlpatterns = [
     path('anime/<int:pk>/delete/',views.DeleteAnimeView.as_view(),name = 'delete-anime'),
     path('anime/<int:pk>/update/',views.UpdateAnimeView.as_view(),name = 'update-anime'),
     path('anime/<int:anime_id>/review/',views.CreateReviewView.as_view(),name = 'review'),
+    path('anime/search/',views.post_search,name = 'anime_search'),
 ]
