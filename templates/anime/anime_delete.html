@@ -1,9 +1,0 @@
-{%extends 'base.html'%}
-{%block title%}コンテンツ削除{%endblock%}
-
-{%block content%}
-<form method="post">
-    {%csrf_token%}
-    <button type = "submit">{{object.name}}を削除する</button>
-</form>
-{%endblock content%}
