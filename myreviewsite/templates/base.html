@@ -48,13 +48,13 @@
             {% if request.user.is_superuser %}
             <a href="{%url 'create-anime'%}" class="nav-link text-light mx-3">コンテンツ追加</a>
             {%endif%}
+             <a href="{%url 'anime_search'%}" class="nav-link text-light mx-3">検索</a>
         </div>
 
         <div class="navbar-nav d-flex flex-row px-2">
             {%if request.user.is_authenticated%}
                 <a href="{%url 'accounts:logout'%}" class="nav-link mx-3 text-light fw-bold">ログアウト</a>
         
-
             {%else%}
                 <a href="{%url 'accounts:login'%}" class="nav-link mx-3 text-light fw-bold">ログイン</a>
                 <a href="{%url 'accounts:signup'%}" class="nav-link mx-3 text-light fw-bold">会員登録</a>
