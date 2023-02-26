@@ -22,6 +22,8 @@ class Anime(models.Model):
     overview = models.TextField()
     #アニメの画像
     thumbnail = models.ImageField(null = True,blank = True)
+    #作者のコメント
+    comment = models.TextField(default="無し")
     #アニメのメインカテゴリー
     main_category = models.CharField(
         max_length=100,

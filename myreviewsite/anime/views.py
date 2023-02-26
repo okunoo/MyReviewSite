@@ -34,7 +34,7 @@ class CreateAnimeView(LoginRequiredMixin,CreateView):
     template_name = 'anime/anime_create.html'
     model = Anime
     fields = {'name','overview','thumbnail',
-              'main_category','sub_category','score','user'}
+              'main_category','sub_category','score','user','comment'}
     success_url = reverse_lazy('anime_index')
 
 class DeleteAnimeView(LoginRequiredMixin,DeleteView):
@@ -46,7 +46,7 @@ class UpdateAnimeView(LoginRequiredMixin,UpdateView):
     template_name = 'anime/anime-update.html'
     model = Anime
     fields = {'name','overview','thumbnail',
-              'main_category','sub_category','score'}
+              'main_category','sub_category','score','comment'}
     success_url = reverse_lazy('anime_index')
      
     def get_success_url(self):
