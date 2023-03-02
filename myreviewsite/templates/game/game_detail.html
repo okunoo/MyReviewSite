@@ -21,7 +21,7 @@
     <h6 class="card-title">スコア：{{object.score}}</h6>
     <h6 class="card-title">管理者のレビュー：{{object.comment}}</h6>
     <a href="{%url 'game_index'%}" class="btn btn-primary">ゲーム一覧へ</a>
-    <a href="{%url 'review' object.pk%}" class="btn btn-primary">コメント・レビューする</a>
+    <a href="{%url 'game_review' object.pk%}" class="btn btn-primary">コメント・レビューする</a>
     
     {% if request.user.is_superuser %}
     <a href="{%url 'update-game' object.pk%}" class="btn btn-primary">編集する</a>
