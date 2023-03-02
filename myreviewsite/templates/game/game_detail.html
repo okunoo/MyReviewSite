@@ -1,0 +1,31 @@
+{%extends 'game_base.html'%}
+{%block title%}{{object.name}}{%endblock%}
+{%block h1%}コンテンツ詳細{%endblock%}
+
+{%block content%}
+<div class = "p-4 m-4 bg-light border border-success rounded">
+    <h2 class="text-success">{{object.name}}</h2>
+    <p>{{object.overview}}</p>
+    <div class="border p-4 mb-2">
+        {%for review in object.game_review_set.all%}
+            <div>
+                <div class="px-2">
+                    投稿ユーザ:{{review.user.username}}
+                    <h6>評価：{{review.score}}点</h6>
+                    <p>{{review.comment}}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <h6 class="card-title">メインカテゴリ：{{object.main_category}}</h6>
+    <h6 class="card-title">スコア：{{object.score}}</h6>
+    <h6 class="card-title">管理者のレビュー：{{object.comment}}</h6>
+    <a href="{%url 'game_index'%}" class="btn btn-primary">ゲーム一覧へ</a>
+    <a href="{%url 'review' object.pk%}" class="btn btn-primary">コメント・レビューする</a>
+    
+    {% if request.user.is_superuser %}
+    <a href="{%url 'update-game' object.pk%}" class="btn btn-primary">編集する</a>
+    <a href="{%url 'delete-game' object.pk%}" class="btn btn-primary">削除する</a>
+    {%endif%}
+</div>
+{%endblock content%}

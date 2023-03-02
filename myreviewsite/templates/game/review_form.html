@@ -1,0 +1,30 @@
+{%extends 'game_base.html'%}
+{%block title%}コメント・レビュー投稿{%endblock%}
+
+{%block h1%}コメント・レビュー投稿{%endblock%}
+
+{%block content%}
+    <form method="post" class="p-4 m-4 bg-light border border-success rounded form-group">
+        {%csrf_token%}
+        <label>
+            コメント・レビュー対象アニメ
+        </label>
+
+        <input class="form-control" value = "{{game.name}}" readonly>
+
+        <label>
+            コメント本文
+        </label>
+
+        <textarea name = "comment" rows = "3" class="form-control"></textarea>
+
+        <label>
+            スコア(0~100)
+        </label>
+
+        <input class="form-control" name = "score">
+
+        <input type="hidden" name="game" value = "{{game.id}}">
+        <button type = "submit" class="btn btn-success mt-4">コメント・レビューを投稿する</button>
+    </form>
+{%endblock%}

@@ -1,0 +1,10 @@
+{%extends 'game_base.html'%}
+{%block title%}コンテンツ追加{%endblock%}
+
+{%block content%}
+    <form method="post" enctype="multipart/form-data" class = "p-4 m-4 bg-light border-success rounded form-group">
+        {%csrf_token%}
+        {{form.as_p}}
+        <input type="submit" value = "追加する">
+    </form>
+{%endblock content%}

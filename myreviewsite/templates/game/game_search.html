@@ -1,0 +1,33 @@
+{%extends 'game_base.html'%}
+
+{% block content %}
+    <h1>ゲームを検索する</h1>
+    <h5 class = "mb-4">ゲームのタイトル、メインカテゴリで検索できます。</h5>
+    <form method="get">
+        {{ form.as_p }}
+        <button type="submit" class = "btn btn-primary shadow-lg  mb-4">検索する</button>
+    </form>
+
+    {% if query %}
+    <h2>"{{ query }}"　の検索結果</h2>
+    {% if results %}
+    <ul>
+        {% for game in results %}
+        <div class="p-4 m-4 bg-light border border-success border-2 rounded shadow-lg">
+            <h2 class="text-success">{{game.name}}</h2>
+            <img src="{{game.thumbnail.url}}" class="img-thumbnail" />
+            <h6>メインカテゴリ:{{game.main_category}}</h6>
+            <h5>スコア：{{game.score}}点</h5>
+            <h5>管理者のレビュー：{{game.comment}}</h5>
+            <div class="mt-3">
+                <a href="{%url 'detail-game' game.pk%}" class="btn btn-primary shadow-lg">詳細・レビューページへ</a>
+            </div>
+        </div>
+            
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No results found.</p>
+    {% endif %}
+    {% endif %}
+{% endblock %}

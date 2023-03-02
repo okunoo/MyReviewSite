@@ -44,12 +44,12 @@
 <body>
     <nav class="navbar navbar-dark bg-primary sticky-top">
         <div class="navbar-nav d-flex flex-row px-2">
-            <a href="{%url 'anime_index'%}" class="nav-link  text-light mx-3">アニメ一覧</a>
+            <a href="{%url 'anime_index'%}" class="nav-link  text-light mx-3">アニメ一覧へ</a>
             <a href="{%url 'game_index'%}" class="nav-link  text-light mx-3">ゲーム一覧へ</a>
             {% if request.user.is_superuser %}
-            <a href="{%url 'create-anime'%}" class="nav-link text-light mx-3">コンテンツ追加</a>
+            <a href="{%url 'create-game'%}" class="nav-link text-light mx-3">コンテンツ追加</a>
             {%endif%}
-             <a href="{%url 'anime_search'%}" class="nav-link text-light mx-3">検索</a>
+             <a href="{%url 'game_search'%}" class="nav-link text-light mx-3">検索</a>
         </div>
 
         <div class="navbar-nav d-flex flex-row px-2">
